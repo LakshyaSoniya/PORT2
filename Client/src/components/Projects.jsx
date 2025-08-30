@@ -10,11 +10,18 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Jigyasa Online Survey Platform",
-      description: "Developed a full-stack web app for creating and analyzing online surveys. Integrated dynamic charts (pie, bar, heatmap) for data visualization and enabled Excel export for response analytics.",
-      technologies: ["React", "Django", "SQLite3", "Chart.js", "Plotly.py"],
-      link: "https://jigyasa-frontend.vercel.app",
-      github: "https://github.com/Lakshya-jangid-08/Jigyasa_ultimate",
+      "title": "Jigyasa Online Survey Platform",
+      "description": "Developed a full-stack web application for creating, managing, and analyzing online surveys. Features include organization-specific surveys, dynamic data visualization with interactive charts, and comprehensive response analytics with export capabilities.",
+      "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Chart.js", "Tailwind CSS", "JWT Authentication"],
+      "keyFeatures": [
+        "User authentication and role-based access control",
+        "Organization-specific survey management",
+        "Dynamic survey creation with multiple question types",
+        "Real-time data visualization with interactive charts",
+        "Response analytics and data export functionality"
+      ],
+      link: "https://jigyasa-online-survey-mangement.vercel.app",
+      github: "https://github.com/Lakshya-jangid-08/Jigyasa_Online-survey-mangement",
       gradient: "from-blue-500 to-purple-600",
       demoImg : { src: Jigyasa, alt: "Jigyasa Project Screenshot" }
     },
@@ -253,6 +260,29 @@ export default function Projects() {
                   {project.description}
                 </motion.p>
                 
+                {project.keyFeatures && project.keyFeatures.length > 0 && (
+                  <motion.div
+                    className="mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: 0.55 + index * 0.1 }}
+                  >
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Key Features:</h4>
+                    <ul className="list-disc list-inside space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                      {project.keyFeatures.map((feature, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                          transition={{ duration: 0.4, delay: 0.6 + index * 0.1 + i * 0.05 }}
+                        >
+                          {feature}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+                
                 <motion.div 
                   className="flex flex-wrap gap-2 mb-6"
                   initial={{ opacity: 0, y: 20 }}
@@ -304,4 +334,5 @@ export default function Projects() {
       </div>
     </motion.section>
   )
+
 }
